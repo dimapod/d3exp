@@ -4,7 +4,7 @@ var width = 960,
 var force = d3.layout.force()
     .size([width, height])
     .charge(-400)
-    .linkDistance(40)
+    .linkDistance(80)
     .on("tick", tick);
 
 var drag = force.drag()
@@ -18,7 +18,11 @@ var svg = d3.select("body").append("svg")
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
+var relationshipsMap = {};
+
 d3.json("graph.json", function (error, graph) {
+    relationshipsMap = graph.relationshipsMap;
+
     force
         .nodes(graph.nodes)
         .links(graph.links)
@@ -26,16 +30,32 @@ d3.json("graph.json", function (error, graph) {
 
     link = link.data(graph.links)
         .enter().append("line")
-        .attr("class", "link");
+        .attr("class", "link")
+        .attr("stroke", function(d) {
+            return relationshipsMap[d.type] ? relationshipsMap[d.type].color : "#000";
+        });
 
     node = node.data(graph.nodes)
-        .enter().append("circle")
-        .attr("class", "node")
-        .attr("r", 12)
+        .enter().append("g")
         .on("dblclick", dblclick)
         .on("mousedown", mousedown)
         .on("mouseup", mouseup)
         .call(drag);
+
+    node.append("circle")
+        .attr("class", "node")
+        .attr("r", 12)
+        .attr("cx", 0)
+        .attr("cy", 0);
+
+    node.append("text")
+        .attr("class", "title")
+        .attr("x", 15)
+        .attr("dy", ".35em")
+        .text(function (d) {
+            return d.title;
+        });
+
 });
 
 function tick() {
@@ -52,16 +72,12 @@ function tick() {
             return d.target.y;
         });
 
-    node.attr("cx", function (d) {
-        return d.x;
-    })
-        .attr("cy", function (d) {
-            return d.y;
-        });
+    node.attr("transform", function (d) {
+        return "translate(" + d.x + "," + d.y + ")";
+    });
 }
 
 function dblclick(d) {
-//    console.log("click", d)
     d3.select(this).classed("fixed", d.fixed = !d.fixed);
 }
 

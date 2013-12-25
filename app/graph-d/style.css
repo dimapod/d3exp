@@ -1,5 +1,4 @@
 .link {
-    stroke: #000;
     stroke-width: 1.5px;
 }
 
@@ -10,6 +9,11 @@
     stroke-width: 1.5px;
 }
 
-.node.fixed {
+.fixed .node {
     fill: #f00;
+}
+
+text {
+    font: 10px sans-serif;
+    pointer-events: none;
 }
