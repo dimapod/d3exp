@@ -1,0 +1,19 @@
+{
+    "nodes": [
+        {"id": 0, "title": "Jerome Laude", "x1": 469, "y1": 410},
+        {"id": 1, "title": "François Mops", "x1": 493, "y1": 364}
+    ],
+    "links": [
+        {"source":  0, "target":  1, "type": "knows"}
+    ],
+    "relationships": {
+        "knows" : {"type": "knows", "color": "red", "force": 6},
+        "family" : {"type": "family", "color": "blue", "force": 16},
+        "loves" : {"type": "loves", "color": "yellow", "force": 19},
+        "read" : {"type": "read", "color": "black", "force": 2},
+        "likes" : {"type": "likes", "color": "green", "force": 8},
+        "seen" : {"type": "seen", "color": "gray", "force": 1},
+        "studied" : {"type": "studied", "color": "springgreen", "force": 7},
+        "works" : {"type": "works", "color": "tan", "force": 9}
+    }
+}

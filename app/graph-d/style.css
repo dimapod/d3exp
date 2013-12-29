@@ -1,5 +1,6 @@
 .link {
-    stroke-width: 1.5px;
+    fill: none;
+    stroke: #666;
 }
 
 .node {
@@ -16,4 +17,5 @@
 text {
     font: 10px sans-serif;
     pointer-events: none;
+    text-anchor: middle;
 }

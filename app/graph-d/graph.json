@@ -16,42 +16,33 @@
     ],
     "links": [
         {"source":  0, "target":  1, "type": "knows"},
-        {"source":  1, "target":  2, "type": "knows"},
+        {"source":  1, "target":  0, "type": "knows"},
         {"source":  2, "target":  0, "type": "family"},
         {"source":  1, "target":  3, "type": "family"},
         {"source":  3, "target":  2, "type": "knows"},
         {"source":  3, "target":  4, "type": "loves"},
+        {"source":  4, "target":  3, "type": "likes"},
         {"source":  4, "target":  5, "type": "read"},
         {"source":  5, "target":  6, "type": "likes"},
         {"source":  5, "target":  7, "type": "seen"},
         {"source":  6, "target":  7, "type": "knows"},
         {"source":  6, "target":  8, "type": "knows"},
         {"source":  7, "target":  8, "type": "studied"},
-        {"source":  9, "target":  4, "type": "knows"},
         {"source":  9, "target": 11, "type": "read"},
         {"source":  9, "target": 10, "type": "knows"},
         {"source": 10, "target": 11, "type": "read"},
         {"source": 11, "target": 12, "type": "knows"},
-        {"source": 12, "target": 10, "type": "works"}
+        {"source": 12, "target": 10, "type": "works"},
+        {"source": 2, "target": 6, "type": "read"}
     ],
-    "relationships": [
-        {"type": "knows", "color": "red"},
-        {"type": "family", "color": "blue"},
-        {"type": "loves", "color": "yellow"},
-        {"type": "read", "color": "black"},
-        {"type": "likes", "color": "green"},
-        {"type": "seen", "color": "gray"},
-        {"type": "studied", "color": "springgreen"},
-        {"type": "works", "color": "tan"}
-    ],
-    "relationshipsMap": {
-        "knows" : {"type": "knows", "color": "red"},
-        "family" : {"type": "family", "color": "blue"},
-        "loves" : {"type": "loves", "color": "yellow"},
-        "read" : {"type": "read", "color": "black"},
-        "likes" : {"type": "likes", "color": "green"},
-        "seen" : {"type": "seen", "color": "gray"},
-        "studied" : {"type": "studied", "color": "springgreen"},
-        "works" : {"type": "works", "color": "tan"}
+    "relationships": {
+        "knows" : {"type": "knows", "color": "red", "force": 3},
+        "family" : {"type": "family", "color": "blue", "force": 16},
+        "loves" : {"type": "loves", "color": "yellow", "force": 19},
+        "read" : {"type": "read", "color": "black", "force": 2},
+        "likes" : {"type": "likes", "color": "green", "force": 8},
+        "seen" : {"type": "seen", "color": "gray", "force": 1},
+        "studied" : {"type": "studied", "color": "springgreen", "force": 7},
+        "works" : {"type": "works", "color": "tan", "force": 9}
     }
 }
