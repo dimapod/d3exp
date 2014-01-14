@@ -12,14 +12,19 @@ var svg = d3.select("body").append("svg:svg")
     .attr("width", w)
     .attr("height", h);
 
-var drag = force.drag();
+var drag = force.drag()
+    .on("dragstart", dragstart)
+    .on("dragend", dragend);
 
 var color = d3.scale.category10();
+
+var center = {x:w/2, y:h/2};
 
 svg.append("svg:rect")
     .attr("width", w)
     .attr("height", h)
-    .attr("fill", "white");
+    .attr("fill", "white")
+    .on("click", click);
     
 var root = {x:w/2, y:h/2, id:0, fixed: true};
     
@@ -29,13 +34,22 @@ svg.append("svg:circle")
     .attr("cx", function(d) { return d.x; })
     .attr("cy", function(d) { return d.y; })
     .attr("r", 10)
-    .on("mouseover", mouseover)
-    .on("mouseout", mouseout)
+    .classed("root", true)
+//    .on("mouseover", mouseover)
+//    .on("mouseout", mouseout)
     .call(drag);
 
 force.nodes().push(root);
 
-force.on("tick", function() {
+force.on("tick", function(e) {
+
+    var k = e.alpha * .1;
+    force.nodes().forEach(function(node) {
+        //var center = nodes[node.type];
+        node.x += (center.x - node.x) * k;
+        node.y += (center.y - node.y) * k;
+    });
+
     svg.selectAll("circle")
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
@@ -70,12 +84,21 @@ svg.on("mousemove", function() {
     force.start();
 });
 
-function mouseover(evt) {
-    console.log("mouseover");
+function dragstart(evt) {
     dragging = true;
 }
 
-function mouseout(evt) {
-    console.log("mouseout");
+function dragend(evt) {
     dragging = false;
+}
+
+function click(evt) {
+    console.log(d3.mouse(this));
+    console.log(force.nodes()[0]);
+
+    var mc = d3.mouse(this);
+    center.x = mc[0];
+    center.y = mc[1];
+
+//    force.start();
 }
