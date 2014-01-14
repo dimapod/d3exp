@@ -1,6 +1,6 @@
 var width = 960,
     height = 500,
-    nodeR = 8;
+    nodeR = 10;
 
 var force = d3.layout.force()
     .size([width, height])
@@ -135,7 +135,7 @@ function dblclick(d) {
 
 function dragstart(d) {
 //    console.log("dragstart", d)
-    d3.select(this).classed("fixed", d.fixed = true);
+    //d3.select(this).classed("fixed", d.fixed = true);
 }
 
 function dragend(d) {
