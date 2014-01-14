@@ -22,7 +22,7 @@ for (var i = 0; i < 30; i++) {
 
 for (var i = 0; i < nodes.length; i++) {
     for (var j = 0; j < i; j++) {
-        if (Math.random() > .95)
+        if (Math.random() > .90)
             links.push({
                 source: i,
                 target: j,
