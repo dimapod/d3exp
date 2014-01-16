@@ -1,0 +1,48 @@
+{
+    "nodes": [
+        {"id": 0, "title": "Jerome Laude", "x1": 469, "y1": 410},
+        {"id": 1, "title": "François Mops", "x1": 493, "y1": 364},
+        {"id": 2, "title": "Antoine Gotz", "x1": 442, "y1": 365},
+        {"id": 3, "title": "Patric Stuart", "x1": 467, "y1": 314},
+        {"id": 4, "title": "Monika Leizerman", "x1": 477, "y1": 248},
+        {"id": 5, "title": "Alexandre Duma", "x1": 425, "y1": 207},
+        {"id": 6, "title": "Mobi Dic", "x1": 402, "y1": 155},
+        {"id": 7, "title": "Julia Roberts", "x1": 369, "y1": 196},
+        {"id": 8, "title": "Mickael Dubac", "x1": 350, "y1": 148},
+        {"id": 9, "title": "Ludovic Toublanc", "x1": 539, "y1": 222},
+        {"id": 10, "title": "Mother Teresa", "x1": 594, "y1": 235},
+        {"id": 11, "title": "Vinni Pukh", "x1": 582, "y1": 185},
+        {"id": 12, "title": "Utah Kortz", "x1": 633, "y1": 200}
+    ],
+    "links": [
+        {"source":  0, "target":  1, "type": "knows"},
+        {"source":  1, "target":  0, "type": "knows"},
+        {"source":  2, "target":  0, "type": "family"},
+        {"source":  1, "target":  3, "type": "family"},
+        {"source":  3, "target":  2, "type": "knows"},
+        {"source":  3, "target":  4, "type": "loves"},
+        {"source":  4, "target":  3, "type": "likes"},
+        {"source":  4, "target":  5, "type": "read"},
+        {"source":  5, "target":  6, "type": "likes"},
+        {"source":  5, "target":  7, "type": "seen"},
+        {"source":  6, "target":  7, "type": "knows"},
+        {"source":  6, "target":  8, "type": "knows"},
+        {"source":  7, "target":  8, "type": "studied"},
+        {"source":  9, "target": 11, "type": "read"},
+        {"source":  9, "target": 10, "type": "knows"},
+        {"source": 10, "target": 11, "type": "read"},
+        {"source": 11, "target": 12, "type": "knows"},
+        {"source": 12, "target": 10, "type": "works"},
+        {"source": 2, "target": 6, "type": "read"}
+    ],
+    "relationships": {
+        "knows" : {"type": "knows", "color": "red", "force": 3},
+        "family" : {"type": "family", "color": "blue", "force": 16},
+        "loves" : {"type": "loves", "color": "yellow", "force": 19},
+        "read" : {"type": "read", "color": "black", "force": 2},
+        "likes" : {"type": "likes", "color": "green", "force": 8},
+        "seen" : {"type": "seen", "color": "gray", "force": 1},
+        "studied" : {"type": "studied", "color": "springgreen", "force": 7},
+        "works" : {"type": "works", "color": "tan", "force": 9}
+    }
+}
